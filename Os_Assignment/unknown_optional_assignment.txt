@@ -1,0 +1,75 @@
+1. Create a script that creates the firefox process and then stop the firefox process using SIGKILL sign
+
+firefox &
+
+var=$(pidof firefox)
+
+for i in $var
+	do
+		kill -9 $i
+	done
+---------------------------------------------------------------------------------------------------------
+2. Create a script that takes the process name and displays it's pid? - It should throw the error if process name enetered is 
+   incorrect or doesnt exist on the system.
+Ans:
+read -p "Enter the process name: " proc
+
+var=$(pidof $proc)
+
+if [[ -z "$var" ]]
+then
+	echo "Entered process is incorrect"
+else
+	echo "$var"
+fi
+----------------------------------------------------------------------------------------------------
+3. Create a script that takes a pid and displays the process name
+Ans:
+#!/bin/bash
+
+read -p "Enter the process ID(PID): " id
+
+ps -p "$id" | grep -v "TTY" | awk '{print $NF}'
+
+---------------------------------------------------------------------------------------------------------------------------
+4. Create a script that asks for a command name - then displays it's absolute path and the runs it and displays the output?
+Ans:
+#!/bin/bash
+
+read -p "Enter the command: " c
+
+echo "Absolute path: "
+which "$c"
+echo "------------------------"
+
+echo "Executing command....."
+echo " "
+
+sleep 1s
+
+$c
+
+----------------------------------------------------------------------------------------------------------------------------------------
+6. File1	File2
+	cat		dog
+	mat		car
+	dog		poor
+	note		man
+	bag		bat
+	bat		ball
+6.Create a script that tells if the items present under file2 are there in file1 or not. Need to parse through each item.
+Ans:
+
+#!/bin/bash -x
+
+while read line1
+do
+	while read line2
+	do
+		if  [[ "$line1" == "$line2" ]]
+		then
+			echo "Match Found"
+			echo "$line2"
+		fi
+	done < file62
+done < file6

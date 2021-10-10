@@ -1,0 +1,44 @@
+Que :-
+***********************************
+DO this one:#create a directory 'testdir'																										23/09/2021
+#5 files in this directory
+#set 755 as permissions of the file in this directory
+#then list all the files with permissions
+#chnage the permissions to 644
+#list all the files with modified permissions
+#delete all the files
+#Create a directory testdir
+#Create 5 files under it with name as file1,file2...file5
+#In every file enter the content as 
+#file1 -> This is file1
+#.
+#.
+#file5 -> This is file5
+
+
+
+
+Solution:-
+***************************************
+
+[root@localhost ~]# mkdir testdir
+[root@localhost ~]# touch /root/testdir/file{1..5}
+[root@localhost ~]# ls testdir
+file1  file2  file3  file4  file5
+[root@localhost ~]# chmod 755 /root/testdir/*
+[root@localhost ~]# ls -l /root/testdir
+total 0
+-rwxr-xr-x. 1 root root 0 Sep 24 07:13 file1
+-rwxr-xr-x. 1 root root 0 Sep 24 07:13 file2
+-rwxr-xr-x. 1 root root 0 Sep 24 07:13 file3
+-rwxr-xr-x. 1 root root 0 Sep 24 07:13 file4
+-rwxr-xr-x. 1 root root 0 Sep 24 07:13 file5
+[root@localhost ~]# chmod 644 /root/testdir/*
+[root@localhost ~]# ls -l /root/testdir
+total 0
+-rw-r--r--. 1 root root 0 Sep 24 07:13 file1
+-rw-r--r--. 1 root root 0 Sep 24 07:13 file2
+-rw-r--r--. 1 root root 0 Sep 24 07:13 file3
+-rw-r--r--. 1 root root 0 Sep 24 07:13 file4
+-rw-r--r--. 1 root root 0 Sep 24 07:13 file5
+[root@localhost ~]# rm -rf /root/tetsdir/*

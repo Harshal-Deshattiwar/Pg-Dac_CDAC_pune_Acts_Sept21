@@ -1,0 +1,130 @@
+*********************************
+task 1
+********
+Create a script that takes a number as user input and tells if prvided number is a two digit number or single digit number.
+
+#!/bin/bash
+
+read number
+
+if [ $number -gt 9 ] && [ $number -lt 100 ]
+        then
+                echo "Number is two digit"
+elif [ $number -lt 10 ] && [ $number -ge 0 ]
+        then
+                echo "Number is one digit"
+else
+        echo "not a valid Number"
+
+fi
+
+tt@localhost ~]# alias myos="cat /etc/system-release"
+[root@localhost ~]# myos
+CentOS Linux release 7.9.2009 (Core)
+
+
+*********************************
+task 2
+*************************************
+Create a command named as 'myos' - running this command should display the OS you are working on 
+
+alias myos="uname -o"
+
+*********************************
+task 3
+********
+Create a command named as 'myshell' - running this command should display the shell you are working on
+
+alias myshell="echo "$SHELL""
+
+*********************************
+task 4
+************
+Create a script that takes a  path and tells you if provoided path is a file or a directory.
+
+#!/bin/bash
+read path
+if [ -d "$path" ]
+        then
+                echo "path is a directory"
+elif [ -f "$path" ]
+        then
+                echo "path is a file"
+else
+        echo "path is not valid"
+
+fi
+
+*********************************
+task 5
+*******
+Create a script that takes a directory name and lists down all the files (only files) under that dir.
+
+
+#!/bin/bash
+read path
+touch create.txt
+ls $path > create.txt
+
+while read line
+do
+if [ -f "$line" ]
+        then
+                echo "$line"
+
+fi
+done < create.txt
+
+rm -rf create.txt
+
+
+*********************************
+task 6
+*******
+Create a script to get the current date, time, username and current working directory.
+
+#!/bin/bash
+
+date +"%d-%m-%y"
+date "+%T"
+whoami
+pwd
+
+*********************************
+task 7
+********
+Create a script that creates a dir named test and then creates 5 files under it named as file1, file2..file5 and then renames all files by adding .txt extension to all file names
+
+#!/bin/bash
+
+mkdir test
+cd test
+touch file{1..5}
+for i in $( ls ) 
+do 
+	mv $i $i.txt
+done
+cd ..
+
+
+1- How to make the alias permanent?
+*********************************
+a. put your alias inside your ~/.bash_aliases file.
+
+b. If it's not present create one and call it from ~/.bashrc
+
+c. OR you can directly put it inside your ~/.bashrc
+
+
+
+2. Assignment ques - You have a list of files. Traverse through the list and display the permision set of each file?
+**************************************************
+#!/bin/bash
+
+
+while read file
+        do
+                result=$(stat -c %a /etc/$file)
+                echo "$file ------>$result"
+done < sample_file.txt
+

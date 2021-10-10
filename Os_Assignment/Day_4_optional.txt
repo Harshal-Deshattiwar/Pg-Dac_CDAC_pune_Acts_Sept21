@@ -1,0 +1,84 @@
+Task[1]
+1.Redirect the output of ls -l to file.txt
+2.Append the output of dmesg command to file.txt
+3.Copy the content of file.txt to new_file.txt
+4.Find number of lines in new_file.txt
+5.Find all lines starting with 'd' in file.txt
+6.Find 'cpu' character in file.txt
+7.Find "CPU0",CPU1,CPU2, word in file.txt
+8.Find "acpi" in file.txt
+9.Find all words starting with '0x' and ending with 0 in file.txt
+
+solution :-
+ls -l > file.txt
+dmesg >> file.txt
+touch new_file.txt && cp /home/work/file.txt /home/work/new_file.txt
+wc -l new_file.txt
+cat new_file.txt | grep "^d"
+cat new_file.txt | grep -o "cpu"
+cat new_file.txt | grep "CPU0\|CPU1\|CPU3"
+cat new_file.txt | grep "acpi"
+cat new_file.txt | grep -o '0x.*0'
+
+
+***************************************************************************
+1.Write a script which take input from user and calculate the addition
+#!/bin/bash
+read num1
+read num2
+sum=$(( $num1 + $num2 ))
+echo $sum
+
+
+****************************************************************************
+2.Write a script which take input from user and calculate the substraction
+#!/bin/bash
+read num1
+read num2
+sub=$(( $num1 - $num2 ))
+echo $sub
+
+
+*****************************************************************************
+3.Write a script which take input from user and calculate the multiplication   
+#!/bin/bash
+read num1
+read num2
+product=$(( $num1 - $num2 ))
+echo $product   
+
+
+*******************************************************************************
+4.Write a script to find the greatest number in three number.
+#!/bin/bash
+
+read num1
+read num2
+read num3
+
+if [ $num1 -gt $num2 ] && [ $num1 -gt $num3 ]
+        then
+                echo "num $num1 is greater"
+elif [ $num2 -gt $num1 ] && [ $num2 -gt $num3 ]
+        then
+                echo "num $num2 is greater"
+else
+        echo "num $num3 is greater"
+fi
+
+
+
+****************************************************************************
+5.Write a script to find the given number is even or odd
+#!/bin/bash
+
+read num1
+r=$(( $num1 % 2 ))
+if [ $r -eq 0 ]
+        then
+                echo "num is even"
+else
+        echo "num is odd"
+fi
+
+

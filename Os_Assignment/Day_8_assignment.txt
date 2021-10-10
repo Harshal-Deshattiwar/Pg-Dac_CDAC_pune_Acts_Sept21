@@ -1,0 +1,15 @@
+Day_8_assignment
+
+
+Assignment - Difference between 6,9 and 15
+******************************************
+IGKILL and SIGABRT are two type of signals that are sent to process to terminate it.
+
+SIGKILL is equivalent of "kill -9" and is used to kill zombie processes, processes that are already dead and waiting for their parent processes to reap them.
+SIGABRT is equivalent of "kill -6" and is used to terminate/abort running processes.
+
+SIGKILL signal cannot be caught or ignored and the receiving process cannot perform any clean-up upon receiving this signal.
+SIGABRT signal can be caught, but it cannot be blocked.
+
+Basically, the kill -15 is a term signal, which the process could catch to trigger a graceful shutdown, closing pipes, sockets, & files, cleaning up temp space, etc, 
+so to be useful it should give some time.
